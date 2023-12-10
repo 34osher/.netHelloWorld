@@ -1,0 +1,15 @@
+/home/osher/Desktop/.netHelloWorld/bin/Debug/net8.0/.netHelloWorld
+/home/osher/Desktop/.netHelloWorld/bin/Debug/net8.0/.netHelloWorld.deps.json
+/home/osher/Desktop/.netHelloWorld/bin/Debug/net8.0/.netHelloWorld.runtimeconfig.json
+/home/osher/Desktop/.netHelloWorld/bin/Debug/net8.0/.netHelloWorld.dll
+/home/osher/Desktop/.netHelloWorld/bin/Debug/net8.0/.netHelloWorld.pdb
+/home/osher/Desktop/.netHelloWorld/obj/Debug/net8.0/.netHelloWorld.GeneratedMSBuildEditorConfig.editorconfig
+/home/osher/Desktop/.netHelloWorld/obj/Debug/net8.0/.netHelloWorld.AssemblyInfoInputs.cache
+/home/osher/Desktop/.netHelloWorld/obj/Debug/net8.0/.netHelloWorld.AssemblyInfo.cs
+/home/osher/Desktop/.netHelloWorld/obj/Debug/net8.0/.netHelloWorld.csproj.CoreCompileInputs.cache
+/home/osher/Desktop/.netHelloWorld/obj/Debug/net8.0/.netHelloWorld.sourcelink.json
+/home/osher/Desktop/.netHelloWorld/obj/Debug/net8.0/.netHelloWorld.dll
+/home/osher/Desktop/.netHelloWorld/obj/Debug/net8.0/refint/.netHelloWorld.dll
+/home/osher/Desktop/.netHelloWorld/obj/Debug/net8.0/.netHelloWorld.pdb
+/home/osher/Desktop/.netHelloWorld/obj/Debug/net8.0/.netHelloWorld.genruntimeconfig.cache
+/home/osher/Desktop/.netHelloWorld/obj/Debug/net8.0/ref/.netHelloWorld.dll
