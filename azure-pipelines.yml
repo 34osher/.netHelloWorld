@@ -6,6 +6,7 @@ pool:
 
 variables:
   BuildConfiguration: Release
+  versioning: '1.0.0'  # Set your version number here
 
 steps:
 - task: DotNetCoreCLI@2
@@ -14,7 +15,6 @@ steps:
     command: 'build'
     projects: '**/*.csproj'
     arguments: '--configuration $(BuildConfiguration)'
-    packDirectory: '$(Build.ArtifactStagingDirectory)' # string. Alias: outputDir. Optional. Use when command = pack. Package Folder. Default: $(Build.ArtifactStagingDirectory).
 
 
 - task: DotNetCoreCLI@2
@@ -22,8 +22,20 @@ steps:
   inputs:
     command: 'run'
     projects: '**/*.csproj'
-  
+
+- script: |
+    echo "Incrementing version number only if CI steps are successful..."
+    echo "##vso[task.setvariable variable=versioning]1.0.$(Build.BuildId)"
+  displayName: 'Increment Version Number'
+
 - task: NuGetCommand@2
+  displayName: 'Pack NuGet Package'
   inputs:
     command: 'pack'
     packagesToPack: '**/*.csproj'
+    versioningScheme: 'byEnvVar'
+    versionEnvVar: 'versioning'
+
+
+
+
