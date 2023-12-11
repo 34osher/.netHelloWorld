@@ -4,6 +4,8 @@ trigger:
 pool:
   name: docker_agent
 
+variables:
+  BuildConfiguration
 
 steps:
 - task: DotNetCoreCLI@2
@@ -12,6 +14,7 @@ steps:
     command: 'build'
     projects: '**/*.csproj'
     arguments: '--configuration Release'
+    modifyOutputPath: $(Build.ArtifactStagingDirectory)
 
 - task: DotNetCoreCLI@2
   displayName: 'Run .NET Core App'
@@ -19,3 +22,7 @@ steps:
     command: 'run'
     projects: '**/*.csproj'
   
+- task: NuGetCommand@2
+  inputs:
+    command: 'pack'
+    packagesToPack: '**/*.csproj'
