@@ -5,7 +5,7 @@ pool:
   name: docker_agent
 
 variables:
-  BuildConfiguration
+  BuildConfiguration: Release
 
 steps:
 - task: DotNetCoreCLI@2
@@ -13,7 +13,7 @@ steps:
   inputs:
     command: 'build'
     projects: '**/*.csproj'
-    arguments: '--configuration Release'
+    arguments: '--configuration $(BuildConfiguration)'
     modifyOutputPath: $(Build.ArtifactStagingDirectory)
 
 - task: DotNetCoreCLI@2
