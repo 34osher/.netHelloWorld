@@ -1,0 +1,21 @@
+trigger:
+- main
+
+pool:
+  name: docker_agent
+
+
+steps:
+- task: DotNetCoreCLI@2
+  displayName: 'Build .NET Core App'
+  inputs:
+    command: 'build'
+    projects: '**/*.csproj'
+    arguments: '--configuration Release'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Run .NET Core App'
+  inputs:
+    command: 'run'
+    projects: '**/*.csproj'
+  
