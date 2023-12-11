@@ -13,5 +13,9 @@ steps:
     projects: '**/*.csproj'
     arguments: '--configuration Release'
 
-- script: dotnet run --project _netHelloWorld
+- task: DotNetCoreCLI@2
   displayName: 'Run .NET Core App'
+  inputs:
+    command: 'run'
+    projects: '**/*.csproj'
+  
