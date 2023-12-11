@@ -14,7 +14,8 @@ steps:
     command: 'build'
     projects: '**/*.csproj'
     arguments: '--configuration $(BuildConfiguration)'
-    modifyOutputPath: $(Build.ArtifactStagingDirectory)
+    packDirectory: '$(Build.ArtifactStagingDirectory)' # string. Alias: outputDir. Optional. Use when command = pack. Package Folder. Default: $(Build.ArtifactStagingDirectory).
+
 
 - task: DotNetCoreCLI@2
   displayName: 'Run .NET Core App'
