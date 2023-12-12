@@ -9,33 +9,44 @@ variables:
   NuGetPackageOutput: '$(Agent.WorkFolder)/1/a'
 
 steps:
-- task: DotNetCoreCLI@2
+#- task: DotNetCoreCLI@2
+#  displayName: 'Build .NET Core App'
+#  inputs:
+#    command: 'build'
+#    projects: '**/*.csproj'
+#    arguments: '--configuration $(BuildConfiguration) --output $(NuGetPackageOutput)'
+- script: dotnet build **/*.csproj --configuration $(BuildConfiguration) --output $(NuGetPackageOutput)
   displayName: 'Build .NET Core App'
-  inputs:
-    command: 'build'
-    projects: '**/*.csproj'
-    arguments: '--configuration $(BuildConfiguration) --output $(NuGetPackageOutput)'
 
-- task: DotNetCoreCLI@2
+# - task: DotNetCoreCLI@2
+#   displayName: 'Run .NET Core App'
+#   inputs:
+#     command: 'run'
+#     projects: '**/*.csproj'
+- script: |
+    dotnet run --project **/*.csproj
   displayName: 'Run .NET Core App'
-  inputs:
-    command: 'run'
-    projects: '**/*.csproj'
 
-- task: NuGetCommand@2
+# - task: NuGetCommand@2
+#   displayName: 'Pack to NuGet'
+#   inputs:
+#     command: 'pack'
+#     packagesToPack: '**/*.csproj'
+#     versioningScheme: 'off'
+#     buildProperties: 'OutputPath=$(Build.ArtifactStagingDirectory)'
+#     outputDirectory: '$(NuGetPackageOutput)'
+- script: |
+    dotnet pack **/*.csproj --configuration $(BuildConfiguration) --output $(NuGetPackageOutput)
   displayName: 'Pack to NuGet'
-  inputs:
-    command: 'pack'
-    packagesToPack: '**/*.csproj'
-    versioningScheme: 'off'
-    buildProperties: 'OutputPath=$(Build.ArtifactStagingDirectory)'
-    outputDirectory: '$(NuGetPackageOutput)'
 
-- task: NuGetCommand@2
+# - task: NuGetCommand@2
+#   displayName: 'Push to NuGet Feed'
+#   inputs:
+#     command: 'push'
+#     packagesToPush: '$(NuGetPackageOutput)/**/*.nupkg'
+#     nuGetFeedType: 'internal'
+#     publishVstsFeed: 'DotnetUbuntu'
+- script: |
+    dotnet nuget push $(NuGetPackageOutput)/**/*.nupkg --source "DotnetUbuntu" --api-key az
   displayName: 'Push to NuGet Feed'
-  inputs:
-    command: 'push'
-    packagesToPush: '$(NuGetPackageOutput)/**/*.nupkg'
-    nuGetFeedType: 'internal'
-    publishVstsFeed: 'DotnetUbuntu'
 
