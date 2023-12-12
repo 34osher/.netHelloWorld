@@ -7,7 +7,7 @@ pool:
 variables:
   BuildConfiguration: Release
   NuGetPackageOutput: '$(Agent.WorkFolder)/1/a'
-  SourceCoode: '$(Agent.WorkFolder)/1/s'
+  SourceCoode: '$(Agent.WorkFolder)/1/s/.netHelloWorld.csproj'
 
 steps:
 #- task: DotNetCoreCLI@2
@@ -16,7 +16,7 @@ steps:
 #    command: 'build'
 #    projects: '**/*.csproj'
 #    arguments: '--configuration $(BuildConfiguration) --output $(NuGetPackageOutput)'
-- script: dotnet build $(SourceCoode)/*.csproj --configuration $(BuildConfiguration) --output $(NuGetPackageOutput)
+- script: dotnet build $(SourceCoode) --configuration $(BuildConfiguration) --output $(NuGetPackageOutput)
   displayName: 'Build .NET Core App'
 
 # - task: DotNetCoreCLI@2
@@ -25,7 +25,7 @@ steps:
 #     command: 'run'
 #     projects: '**/*.csproj'
 - script: |
-    dotnet run --project $(SourceCoode)/*.csproj
+    dotnet run --project $(SourceCoode)
   displayName: 'Run .NET Core App'
 
 # - task: NuGetCommand@2
@@ -37,7 +37,7 @@ steps:
 #     buildProperties: 'OutputPath=$(Build.ArtifactStagingDirectory)'
 #     outputDirectory: '$(NuGetPackageOutput)'
 - script: |
-    dotnet pack $(SourceCoode)/*.csproj --configuration $(BuildConfiguration) --output $(NuGetPackageOutput)
+    dotnet pack $(SourceCoode) --configuration $(BuildConfiguration) --output $(NuGetPackageOutput)
   displayName: 'Pack to NuGet'
 
 # - task: NuGetCommand@2
