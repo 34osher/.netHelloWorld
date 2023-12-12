@@ -64,7 +64,6 @@ steps:
 
   displayName: 'Increment Patch Version'
 
-
 # - task: NuGetCommand@2
 #   displayName: 'Pack to NuGet'
 #   inputs:
