@@ -16,7 +16,7 @@ steps:
     git checkout $(Build.SourceBranchName)
     # Your other commands
   displayName: 'Checkout Branch and Make Changes'
-  
+
 #- task: DotNetCoreCLI@2
 #  displayName: 'Build .NET Core App'
 #  inputs:
@@ -58,7 +58,7 @@ steps:
     # Commit and push the change
     # git config --global user.email "34osher@gmail.com"
     # git config --global user.name "34osher"
-    # git config --global http.extraheader "AUTHORIZATION: bearer $(AutoriKey)"
+    
 
     # Stage only the .csproj file
     git add $CSPROJ_FILE
