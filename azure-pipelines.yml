@@ -50,4 +50,3 @@ steps:
 - script: |
     dotnet nuget push $(NuGetPackageOutput)/**/*.nupkg --source "DotnetUbuntu" --api-key az
   displayName: 'Push to NuGet Feed'
-
