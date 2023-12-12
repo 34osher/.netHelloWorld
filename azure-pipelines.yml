@@ -51,8 +51,15 @@ steps:
     # Commit and push the change
     # git config --global user.email "youremail@example.com"
     # git config --global user.name "Your Name"
-    git commit -am "Increment version to $NEW_VERSION [skip ci]"
-    git push
+    
+    # Stage only the .csproj file
+    git add $CSPROJ_FILE
+
+    # Commit the change
+    git commit -m "Increment version to $NEW_VERSION [skip ci]"
+
+    # Push the commit to the current branch
+    git push origin HEAD:refs/heads/$(Build.SourceBranchName)
 
   displayName: 'Increment Patch Version'
 
