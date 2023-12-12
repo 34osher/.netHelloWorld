@@ -21,7 +21,7 @@ steps:
   inputs:
     command: 'run'
     projects: '**/*.csproj'
-  
+
 - task: NuGetCommand@2
   displayName: 'Pack to NuGet'
   inputs:
@@ -38,3 +38,4 @@ steps:
     packagesToPush: '$(NuGetPackageOutput)/**/*.nupkg'
     nuGetFeedType: 'internal'
     publishVstsFeed: 'DotnetUbuntu'
+
