@@ -49,8 +49,8 @@ steps:
     sed -i "s/<Version>$VERSION<\/Version>/<Version>$NEW_VERSION<\/Version>/" $CSPROJ_FILE
 
     # Commit and push the change
-    # git config --global user.email "youremail@example.com"
-    # git config --global user.name "Your Name"
+    git config --global user.email "34osher@gmail.com"
+    git config --global user.name "34osher"
     
     # Stage only the .csproj file
     git add $CSPROJ_FILE
