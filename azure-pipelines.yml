@@ -10,13 +10,6 @@ variables:
   SourceCoode: '$(Agent.WorkFolder)/1/s/.netHelloWorld.csproj'
 
 steps:
-
-- checkout: self
-- script: |
-    git checkout $(Build.SourceBranchName)
-    # Your other commands
-  displayName: 'Checkout Branch and Make Changes'
-
 #- task: DotNetCoreCLI@2
 #  displayName: 'Build .NET Core App'
 #  inputs:
