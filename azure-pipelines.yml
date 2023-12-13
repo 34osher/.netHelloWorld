@@ -70,7 +70,7 @@ steps:
 #     nuGetFeedType: 'internal'
 #     publishVstsFeed: 'DotnetUbuntu'
 - script: |
-    dotnet nuget push $(NuGetPackageOutput)/**/*.nupkg --source "DotnetUbuntu" --api-key az
+    dotnet nuget push --skip-duplicate $(NuGetPackageOutput)/**/*.nupkg --source "DotnetUbuntu" --api-key az
   displayName: 'Push to NuGet Feed'
 
 - script: |
