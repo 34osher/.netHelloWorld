@@ -77,8 +77,8 @@ steps:
     #!/bin/bash
 
     # Commit and push the change
-    # git config --global user.email "34osher@gmail.com"
-    # git config --global user.name "34osher"
+    git config --global user.email "34osher@gmail.com"
+    git config --global user.name "34osher"
     
     git config --local http.extraheader "AUTHORIZATION: bearer $(YOURPATVARIABLE)"
 
