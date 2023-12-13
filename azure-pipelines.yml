@@ -4,6 +4,7 @@ trigger:
 pool:
   name: docker_agent
 
+
 variables:
 - group: authorizationkeys
 
