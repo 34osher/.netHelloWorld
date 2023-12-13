@@ -13,7 +13,7 @@ variables:
   minor: 1
   name: $(major).$(minor)$(Rev:.r)
 - group: authorizationkeys
-
+- name: AutoriKey
 
 
 steps:
