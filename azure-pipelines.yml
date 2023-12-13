@@ -48,9 +48,10 @@ steps:
 
     # Push the commit to the current branch
     git push origin HEAD:refs/heads/$(Build.SourceBranchName)
-  displayName: 'Increment Patch Version'
   env:
-    YOURPATVARIABLE: $(YOURPATVARIABLE) 
+    YOURPATVARIABLE: $(AutoKey) 
+  displayName: 'Increment Patch Version'
+  
 
 #- task: DotNetCoreCLI@2
 #  displayName: 'Build .NET Core App'
