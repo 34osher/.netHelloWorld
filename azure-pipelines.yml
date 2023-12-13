@@ -44,7 +44,18 @@ steps:
     gitHubConnection: '34osher'
     repositoryName: '$(Build.Repository.Name)'
     comment: 'Increment version to $NEW_VERSION [skip ci]'
-    
+
+- task: GitHubRelease@1
+  inputs:
+    gitHubConnection: 'PAT'
+    repositoryName: '$(Build.Repository.Name)'
+    action: 'create'
+    target: '$(Build.SourceVersion)'
+    tagSource: 'gitTag'
+    tagPattern: 'v*'
+    changeLogCompareToRelease: 'lastFullRelease'
+    changeLogType: 'commitBased'
+
 #- task: DotNetCoreCLI@2
 #  displayName: 'Build .NET Core App'
 #  inputs:
