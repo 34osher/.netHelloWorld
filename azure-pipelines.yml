@@ -83,7 +83,7 @@ steps:
     git pull origin main
 
     # Stage only the .csproj file
-    git add $CSPROJ_FILE
+    git add $(SourceCoode)
 
     # Commit the change
     git commit -m "Increment version to $NEW_VERSION [skip ci]"
