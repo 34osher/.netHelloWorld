@@ -30,6 +30,20 @@ steps:
 
     # Update the .csproj file
     sed -i "s/<Version>$VERSION<\/Version>/<Version>$NEW_VERSION<\/Version>/" $CSPROJ_FILE
+
+    # Commit and push the change
+    git config --local http.extraheader "AUTHORIZATION: bearer $(YOURPATVARIABLE)"
+    git config --global user.email "34osher@gmail.com"
+    git config --global user.name "34osher"
+    
+    # Stage only the .csproj file
+    git add $(SourceCoode)
+
+    # Commit the change
+    git commit -m "Increment version to $NEW_VERSION [skip ci]"
+
+    # Push the commit to the current branch
+    git push origin HEAD:refs/heads/$(Build.SourceBranchName)
   displayName: 'Increment Patch Version'
 
 #- task: DotNetCoreCLI@2
@@ -76,21 +90,6 @@ steps:
 - script: |
     #!/bin/bash
 
-    # Commit and push the change
-    git config --global user.email "34osher@gmail.com"
-    git config --global user.name "34osher"
-    
-    git config --local http.extraheader "AUTHORIZATION: bearer $(YOURPATVARIABLE)"
 
-    git pull origin main
-
-    # Stage only the .csproj file
-    git add $(SourceCoode)
-
-    # Commit the change
-    git commit -m "Increment version to $NEW_VERSION [skip ci]"
-
-    # Push the commit to the current branch
-    git push origin HEAD:refs/heads/$(Build.SourceBranchName)
 
   displayName: 'Push to repo the new version'  
