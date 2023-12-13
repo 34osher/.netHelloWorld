@@ -21,6 +21,8 @@ steps:
     # Path to the .csproj file
     CSPROJ_FILE="$(SourceCoode)"
 
+    git pull origin main
+
     # Extract the current version
     VERSION=$(grep -Po '(?<=<Version>)[^<]+' $CSPROJ_FILE)
     echo "Current version: $VERSION"
