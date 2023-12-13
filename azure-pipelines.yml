@@ -36,7 +36,7 @@ steps:
     sed -i "s/<Version>$VERSION<\/Version>/<Version>$NEW_VERSION<\/Version>/" $CSPROJ_FILE
 
     # Commit and push the change
-    git config --local http.extraheader "AUTHORIZATION: bearer $(YOURPATVARIABLE)"
+    git config --local http.extraheader "AUTHORIZATION: bearer $(AutoKey)"
     git config --global user.email "34osher@gmail.com"
     git config --global user.name "34osher"
 
@@ -48,8 +48,6 @@ steps:
 
     # Push the commit to the current branch
     git push origin HEAD:refs/heads/$(Build.SourceBranchName)
-  env:
-    YOURPATVARIABLE: $(AutoKey) 
   displayName: 'Increment Patch Version'
   
 
