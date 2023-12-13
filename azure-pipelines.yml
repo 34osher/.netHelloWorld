@@ -8,9 +8,6 @@ variables:
   BuildConfiguration: Release
   NuGetPackageOutput: '$(Agent.WorkFolder)/1/a'
   SourceCoode: '$(Agent.WorkFolder)/1/s/.netHelloWorld.csproj'
-  major: 1
-  minor: 1
-  name: $(major).$(minor)$(Rev:.r)
 
 steps: 
 - checkout: self
