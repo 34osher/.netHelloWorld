@@ -5,10 +5,12 @@ pool:
   name: docker_agent
 
 variables:
+- group: authorizationkeys
+
   BuildConfiguration: Release
   NuGetPackageOutput: '$(Agent.WorkFolder)/1/a'
   SourceCoode: '$(Agent.WorkFolder)/1/s/.netHelloWorld.csproj'
-  - group: authorizationkeys
+  
   major: 1
   minor: 1
   name: $(major).$(minor)$(Rev:.r)
@@ -36,9 +38,9 @@ steps:
     sed -i "s/<Version>$VERSION<\/Version>/<Version>$NEW_VERSION<\/Version>/" $CSPROJ_FILE
 
     # Commit and push the change
-    # git config --local http.extraheader "AUTHORIZATION: bearer $(AutoKey)"
-    # git config --global user.email "34osher@gmail.com"
-    # git config --global user.name "34osher"
+    git config --local http.extraheader "AUTHORIZATION: bearer $(AutoriKey)"
+    git config --global user.email "34osher@gmail.com"
+    git config --global user.name "34osher"
 
     # Stage only the .csproj file
     git add $(SourceCoode)
