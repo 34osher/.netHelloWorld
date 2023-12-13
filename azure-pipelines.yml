@@ -36,24 +36,11 @@ steps:
 
     # Update the .csproj file
     sed -i "s/<Version>$VERSION<\/Version>/<Version>$NEW_VERSION<\/Version>/" $CSPROJ_FILE
-  displayName: 'Increment Patch Version'
-  
-- task: GitHubComment@0
-  inputs:
-    gitHubConnection: '34osher'
-    repositoryName: '$(Build.Repository.Name)'
-    comment: 'Increment version to $NEW_VERSION [skip ci]'
 
-- task: GitHubRelease@1
-  inputs:
-    gitHubConnection: '34osher'
-    repositoryName: '$(Build.Repository.Name)'
-    action: 'create'
-    target: '$(Build.SourceVersion)'
-    tagSource: 'gitTag'
-    tagPattern: 'v*'
-    changeLogCompareToRelease: 'lastFullRelease'
-    changeLogType: 'commitBased'
+    #git config --local http.extraheader "AUTHORIZATION: bearer $(AutoriKey)"
+    git config --global user.email "34osher@gmail.com"
+    git config --global user.name "34osher"
+  displayName: 'Increment Patch Version'
 
 #- task: DotNetCoreCLI@2
 #  displayName: 'Build .NET Core App'
