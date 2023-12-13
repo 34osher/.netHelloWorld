@@ -8,6 +8,10 @@ variables:
   BuildConfiguration: Release
   NuGetPackageOutput: '$(Agent.WorkFolder)/1/a'
   SourceCoode: '$(Agent.WorkFolder)/1/s/.netHelloWorld.csproj'
+  
+  major: 1
+  minor: 1
+  name: $(major).$(minor)$(Rev:.r)
 
 steps:
 
@@ -35,7 +39,7 @@ steps:
     git config --local http.extraheader "AUTHORIZATION: bearer $(YOURPATVARIABLE)"
     git config --global user.email "34osher@gmail.com"
     git config --global user.name "34osher"
-    
+
     # Stage only the .csproj file
     git add $(SourceCoode)
 
@@ -45,6 +49,8 @@ steps:
     # Push the commit to the current branch
     git push origin HEAD:refs/heads/$(Build.SourceBranchName)
   displayName: 'Increment Patch Version'
+  env:
+    YOURPATVARIABLE: $(YOURPATVARIABLE) 
 
 #- task: DotNetCoreCLI@2
 #  displayName: 'Build .NET Core App'
@@ -86,10 +92,3 @@ steps:
 - script: |
     dotnet nuget push --skip-duplicate $(NuGetPackageOutput)/**/*.nupkg --source "DotnetUbuntu" --api-key az
   displayName: 'Push to NuGet Feed'
-
-- script: |
-    #!/bin/bash
-
-
-
-  displayName: 'Push to repo the new version'  
