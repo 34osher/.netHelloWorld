@@ -80,6 +80,8 @@ steps:
     # git config --global user.email "34osher@gmail.com"
     # git config --global user.name "34osher"
     
+    git config --local http.extraheader "AUTHORIZATION: bearer $(YOURPATVARIABLE)"
+
     git pull origin main
 
     # Stage only the .csproj file
