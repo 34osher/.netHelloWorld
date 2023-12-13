@@ -40,6 +40,15 @@ steps:
     #git config --local http.extraheader "AUTHORIZATION: bearer $(AutoriKey)"
     git config --global user.email "34osher@gmail.com"
     git config --global user.name "34osher"
+    
+    # Stage only the .csproj file
+    git add $(SourceCoode)
+
+    # Commit the change
+    git commit -m "Increment version to $NEW_VERSION [skip ci]"
+
+    # Push the commit to the current branch
+    git push origin HEAD:refs/heads/$(Build.SourceBranchName)
   displayName: 'Increment Patch Version'
 
 #- task: DotNetCoreCLI@2
