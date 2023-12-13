@@ -12,48 +12,14 @@ variables:
   major: 1
   minor: 1
   name: $(major).$(minor)$(Rev:.r)
-- group: authorizationkeys
-- name: AutoriKey
 
-
-steps:
-
-- script: |
-    #!/bin/bash
-
-    # Path to the .csproj file
-    CSPROJ_FILE="$(SourceCoode)"
-
-    # Extract the current version
-    VERSION=$(grep -Po '(?<=<Version>)[^<]+' $CSPROJ_FILE)
-    echo "Current version: $VERSION"
-
-    # Increment the patch version
-    IFS='.' read -ra ADDR <<< "$VERSION"
-    PATCH=${ADDR[2]}
-    PATCH=$((PATCH + 1))
-    NEW_VERSION="${ADDR[0]}.${ADDR[1]}.$PATCH"
-    echo "New version: $NEW_VERSION"
-
-    # Update the .csproj file
-    sed -i "s/<Version>$VERSION<\/Version>/<Version>$NEW_VERSION<\/Version>/" $CSPROJ_FILE
-
-    # Commit and push the change
-    git config --local http.extraheader "AUTHORIZATION: bearer $(AutoriKey)"
-    git config --global user.email "34osher@gmail.com"
-    git config --global user.name "34osher"
-
-    # Stage only the .csproj file
-    git add $(SourceCoode)
-
-    # Commit the change
-    git commit -m "Increment version to $NEW_VERSION [skip ci]"
-
-    # Push the commit to the current branch
-    git push origin HEAD:refs/heads/$(Build.SourceBranchName)
-  displayName: 'Increment Patch Version'
-  
-
+steps: 
+- task: GitHubComment@0
+  inputs:
+    gitHubConnection: '34osher'
+    repositoryName: '$(Build.Repository.Name)'
+    comment: '[skip ci]'
+    
 #- task: DotNetCoreCLI@2
 #  displayName: 'Build .NET Core App'
 #  inputs:
