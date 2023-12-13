@@ -80,8 +80,8 @@ steps:
     # git config --global user.email "34osher@gmail.com"
     # git config --global user.name "34osher"
     
-    git pull
-    
+    git pull --no-recurse-submodules
+
     # Stage only the .csproj file
     git add $CSPROJ_FILE
 
@@ -90,4 +90,5 @@ steps:
 
     # Push the commit to the current branch
     git push origin HEAD:refs/heads/$(Build.SourceBranchName)
+
   displayName: 'Push to repo the new version'  
