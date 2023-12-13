@@ -80,7 +80,8 @@ steps:
     # git config --global user.email "34osher@gmail.com"
     # git config --global user.name "34osher"
     
-
+    git pull
+    
     # Stage only the .csproj file
     git add $CSPROJ_FILE
 
