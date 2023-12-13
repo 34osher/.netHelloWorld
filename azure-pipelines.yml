@@ -72,12 +72,6 @@ steps:
     dotnet pack $(SourceCoode) --configuration $(BuildConfiguration) --output $(NuGetPackageOutput)
   displayName: 'Pack to NuGet'
 
-- task: PublishBuildArtifacts@1
-  displayName: Publish artifacts
-  inputs:
-    ArtifactName: BuildVersioning
-    pathToPublish: $(BUILD_ARTIFACT_PATH)
-
 # - task: NuGetCommand@2
 #   displayName: 'Push to NuGet Feed'
 #   inputs:
