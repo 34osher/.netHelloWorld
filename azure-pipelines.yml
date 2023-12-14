@@ -48,16 +48,11 @@ steps:
     git push origin HEAD:refs/heads/$(Build.SourceBranchName)
   displayName: 'Increment Patch Version'
 
-- task: CmdLine@2
-  displayName: 'Install Sonar Tools and Start Scanner'
+- task: SonarQubePrepare@5
   inputs:
-    script: |
-      echo Installing sonarScanner tool
-      dotnet tool install --global dotnet-sonarscanner 
-      export PATH="$PATH:$HOME/.dotnet/tools"
-      echo Start Scanner
-      dotnet-sonarscanner begin /k:"HolleWorld_HolleWorld_AYxn5NFYnk9uasdQlj3u" /d:sonar.host.url="http://15.188.55.55:9000" /d:sonar.login="sqa_7ccfca7e28c8976996ef1049261df6471ee1e1c8"
-
+    SonarQube: 'HolleWorld'
+    scannerMode: 'MSBuild'
+    projectKey: 'HolleWorld_HolleWorld_AYxoc8bct-c1Nry61ATG'
 
 #- task: DotNetCoreCLI@2
 #  displayName: 'Build .NET Core App'
@@ -68,13 +63,14 @@ steps:
 - script: dotnet build $(SourceCoode) --configuration $(BuildConfiguration) --output $(NuGetPackageOutput)
   displayName: 'Build .NET Core App'
 
-- task: CmdLine@2
-  displayName: 'Collect Sonar results and Upload'
+- task: SonarQubeAnalyze@5
   inputs:
-    script: |
-      echo Run Sonar End
-      dotnet-sonarscanner end /d:sonar.login="sqa_7ccfca7e28c8976996ef1049261df6471ee1e1c8"
-    
+    jdkversion: 'JAVA_HOME'
+
+- task: SonarQubePublish@5
+  inputs:
+    pollingTimeoutSec: '300'
+
 # - task: DotNetCoreCLI@2
 #   displayName: 'Run .NET Core App'
 #   inputs:
