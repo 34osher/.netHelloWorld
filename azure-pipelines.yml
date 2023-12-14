@@ -48,7 +48,6 @@ steps:
     git push origin HEAD:refs/heads/$(Build.SourceBranchName)
   displayName: 'Increment Patch Version'
 
-
 - task: SonarQubePrepare@5
   inputs:
     SonarQube: 'osher'
