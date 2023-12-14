@@ -81,7 +81,6 @@ steps:
   displayName: 'Run .NET Core App'
 
 
-
 # - task: NuGetCommand@2
 #   displayName: 'Pack to NuGet'
 #   inputs:
