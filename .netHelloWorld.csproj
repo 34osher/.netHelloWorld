@@ -6,7 +6,7 @@
     <RootNamespace>_netHelloWorld</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Version>2.0.8</Version>
+    <Version>2.0.9</Version>
     <PackageId>HelloWorld</PackageId>
   </PropertyGroup>
 
