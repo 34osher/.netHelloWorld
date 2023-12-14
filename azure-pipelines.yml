@@ -54,7 +54,7 @@ steps:
     script: |
       echo Installing sonarScanner tool
       dotnet tool install --global dotnet-sonarscanner 
-
+      export PATH="$PATH:$HOME/.dotnet/tools"
       echo Start Scanner
       dotnet-sonarscanner begin /k:"HolleWorld_HolleWorld_AYxn5NFYnk9uasdQlj3u" /d:sonar.host.url="http://15.188.55.55:9000" /d:sonar.login="sqa_7ccfca7e28c8976996ef1049261df6471ee1e1c8"
 
