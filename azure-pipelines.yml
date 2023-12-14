@@ -74,14 +74,6 @@ steps:
     script: |
       echo Run Sonar End
       dotnet-sonarscanner end /d:sonar.login="sqa_7ccfca7e28c8976996ef1049261df6471ee1e1c8"
-
-- task: SonarQubeAnalyze@5
-  inputs:
-    jdkversion: 'JAVA_HOME'
-
-- task: SonarQubePublish@5
-  inputs:
-    pollingTimeoutSec: '360'
     
 # - task: DotNetCoreCLI@2
 #   displayName: 'Run .NET Core App'
