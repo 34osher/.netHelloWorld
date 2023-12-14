@@ -48,6 +48,13 @@ steps:
     git push origin HEAD:refs/heads/$(Build.SourceBranchName)
   displayName: 'Increment Patch Version'
 
+
+- task: SonarQubePrepare@5
+  inputs:
+    SonarQube: 'osher'
+    scannerMode: 'MSBuild'
+    projectKey: 'HolleWorld_HolleWorld_AYxnSAmX-Qvy1T93XsJS'
+
 #- task: DotNetCoreCLI@2
 #  displayName: 'Build .NET Core App'
 #  inputs:
@@ -57,6 +64,14 @@ steps:
 - script: dotnet build $(SourceCoode) --configuration $(BuildConfiguration) --output $(NuGetPackageOutput)
   displayName: 'Build .NET Core App'
 
+- task: SonarQubeAnalyze@5
+  inputs:
+    jdkversion: 'JAVA_HOME_11_X64'
+
+- task: SonarQubePublish@5
+  inputs:
+    pollingTimeoutSec: '360'
+
 # - task: DotNetCoreCLI@2
 #   displayName: 'Run .NET Core App'
 #   inputs:
@@ -65,6 +80,8 @@ steps:
 - script: |
     dotnet run --project $(SourceCoode)
   displayName: 'Run .NET Core App'
+
+
 
 # - task: NuGetCommand@2
 #   displayName: 'Pack to NuGet'
