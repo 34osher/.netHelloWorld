@@ -54,6 +54,11 @@ steps:
     scannerMode: 'MSBuild'
     projectKey: 'HolleWorld_HolleWorld_AYxn5NFYnk9uasdQlj3u'
     projectName: 'HolleWorld'
+    extraProperties: |
+      # Additional properties that will be passed to the scanner, 
+      # Put one key=value per line, example:
+      # sonar.exclusions=**/*.bin
+      sonar.branch.name=test
 
 
 
