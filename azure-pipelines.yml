@@ -53,6 +53,7 @@ steps:
     SonarQube: 'HolleWorld'
     scannerMode: 'MSBuild'
     projectKey: 'HolleWorld_HolleWorld_AYxoc8bct-c1Nry61ATG'
+  displayName: 'Run Sonarqube'
 
 #- task: DotNetCoreCLI@2
 #  displayName: 'Build .NET Core App'
@@ -66,10 +67,12 @@ steps:
 - task: SonarQubeAnalyze@5
   inputs:
     jdkversion: 'JAVA_HOME'
+  displayName: 'set the pat for java jdk'
 
 - task: SonarQubePublish@5
   inputs:
     pollingTimeoutSec: '300'
+  displayName: 'Sonarqube time out'
 
 # - task: DotNetCoreCLI@2
 #   displayName: 'Run .NET Core App'
