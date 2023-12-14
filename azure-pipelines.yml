@@ -52,7 +52,7 @@ steps:
   inputs:
     SonarQube: 'osher'
     scannerMode: 'MSBuild'
-    projectKey: 'HolleWorld_HolleWorld_AYxnSAmX-Qvy1T93XsJS'
+    projectKey: 'HolleWorld_HolleWorld_AYxnnRNAnk9uasdQlj3K'
 
 #- task: DotNetCoreCLI@2
 #  displayName: 'Build .NET Core App'
