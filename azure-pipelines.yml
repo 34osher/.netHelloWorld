@@ -103,4 +103,3 @@ steps:
 - script: |
     dotnet nuget push --skip-duplicate $(NuGetPackageOutput)/**/*.nupkg --source "DotnetUbuntu" --api-key az
   displayName: 'Push to NuGet Feed'
-
